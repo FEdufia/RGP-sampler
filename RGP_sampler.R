@@ -169,6 +169,16 @@ f4b = surf|>
 
 LFdata = read_xlsx("data/LCFTdata.xlsx")
 
+lpalette = c("A-Sugar" = "#6c6f81ff",
+             "Carbohydrate" = "#48453eff",
+             "Isotoplogue" = "lightyellow2",
+             "Lipid" = "grey",
+             "Organosulfur" = "lightskyblue4",
+             "Peptide" = "#e6d59aff",
+             "Phytochemical" = "darkseagreen",
+             "Unclassified" = "#000000ff"
+)
+
 f4c = LFdata|>
   filter(Treatment == "Night")|>
   group_by( Sample_Type, `Stoichiometric classification`)|>
@@ -271,7 +281,7 @@ HG = Lipid_Night_HG|>
   mutate(RelativeIntensity = as.numeric(RelativeIntensity),
          Headgroup = factor(Headgroup, levels = c("SQMG","MGDG",  "CL", "PG",  "PC","PI", "PC O", "PA O","PE O", "PI O","LPI",  "LPI O"  , "LPG O","LPA O")))
 
-
+lipid_order = c("SQMG","MGDG",  "CL", "PG",  "PC","PI", "PC O", "PA O","PE O", "PI O","LPI",  "LPI O"  , "LPG O","LPA O")
 
 lipid_colors <- colorRampPalette(c("#79abe2ff","#f9d67eff" ,"#ffffc8ff","grey90","#a79fe1ff"))(length(lipid_order))
 
